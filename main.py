@@ -193,6 +193,32 @@ def mostrar_objetivos():
     tk.Button(area, text="Ir al quiz", font=FUENTE_T,
               bg=ACENTO, fg="white", relief="flat", cursor="hand2",
               command=lambda: mostrar_quiz(2)).pack(anchor="w", padx=24)
+    
+
+#Las fechas    
+def mostrar_fechas():
+    limpiar(area)
+    tk.Label(area, text="La Linea del Tiempo", font=FUENTE_G,
+             bg=PANEL, fg=ACENTO).pack(anchor="w", padx=24, pady=(20, 14))
+
+    frame_fechas = tk.Frame(area, bg=PANEL)
+    frame_fechas.pack(anchor="w", padx=24)
+
+    for nombre, fecha in FECHAS:
+        fila = tk.Frame(frame_fechas, bg=PANEL)
+        fila.pack(fill="x", pady=8)
+        tk.Label(fila, text="—", font=FUENTE_T, bg=PANEL,
+                 fg=ACENTO).pack(side="left", padx=(0, 10))
+        tk.Label(fila, text=nombre, font=FUENTE_T, bg=PANEL,
+                 fg=TEXTO, width=16, anchor="w").pack(side="left")
+        tk.Label(fila, text=fecha, font=FUENTE,
+                 bg=PANEL, fg=GRIS).pack(side="left")
+
+    tk.Button(area, text="Ir al quiz", font=FUENTE_T,
+              bg=ACENTO, fg="white", relief="flat", cursor="hand2",
+              command=lambda: mostrar_quiz(3)).pack(anchor="w", padx=24, pady=24)
+    
+
 
 # ── navegacion ────────────────────────────────────────────────────────────────
 def navegar(indice):
@@ -206,6 +232,8 @@ def navegar(indice):
         mostrar_evaluacion()
     elif indice == 2:
         mostrar_objetivos()
+    elif indice == 3:
+        mostrar_fechas()
 
 
 # ── sidebar ───────────────────────────────────────────────────────────────────
