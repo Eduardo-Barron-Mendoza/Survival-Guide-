@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from contenido import REGLAS, EVALUACION
+from contenido import REGLAS, EVALUACION, OBJETIVOS, FECHAS
 from preguntas import get_preguntas
 
 BG     = "#f0f4f8"
@@ -172,6 +172,27 @@ def mostrar_evaluacion():
               bg=ACENTO, fg="white", relief="flat", cursor="hand2",
               command=lambda: mostrar_quiz(1)).pack(pady=24)
 
+# Objetivos
+def mostrar_objetivos():
+    limpiar(area)
+    tk.Label(area, text="Skills a Desbloquear", font=FUENTE_G,
+             bg=PANEL, fg=ACENTO).pack(anchor="w", padx=24, pady=(20, 14))
+
+    tk.Label(area, text="Objetivo general", font=FUENTE_T,
+             bg=PANEL, fg=TEXTO).pack(anchor="w", padx=24, pady=(0, 4))
+    tk.Label(area, text=OBJETIVOS["general"], font=FUENTE,
+             bg=PANEL, fg=TEXTO, wraplength=580,
+             justify="left").pack(anchor="w", padx=24, pady=(0, 16))
+
+    tk.Label(area, text="Competencias", font=FUENTE_T,
+             bg=PANEL, fg=TEXTO).pack(anchor="w", padx=24, pady=(0, 4))
+    tk.Label(area, text=OBJETIVOS["competencias"], font=FUENTE,
+             bg=PANEL, fg=TEXTO, wraplength=580,
+             justify="left").pack(anchor="w", padx=24, pady=(0, 24))
+
+    tk.Button(area, text="Ir al quiz", font=FUENTE_T,
+              bg=ACENTO, fg="white", relief="flat", cursor="hand2",
+              command=lambda: mostrar_quiz(2)).pack(anchor="w", padx=24)
 
 # ── navegacion ────────────────────────────────────────────────────────────────
 def navegar(indice):
@@ -183,6 +204,8 @@ def navegar(indice):
         mostrar_reglas()
     elif indice == 1:
         mostrar_evaluacion()
+    elif indice == 2:
+        mostrar_objetivos()
 
 
 # ── sidebar ───────────────────────────────────────────────────────────────────
